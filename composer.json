@@ -1,0 +1,28 @@
+{
+    "name": "mauricek/psr-authorization",
+    "description": "A PSR-7 compatible package to handle authorization. Includes assertions out oof the box to assert if a user is owner of a resouce.",
+    "type": "library",
+    "license": "New BSD License",
+    "authors": [
+        {
+            "name": "mkherlakian",
+            "email": "1141190+mkherlakian@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mauricek\\PsrAuthorization\\": "src/"
+        }
+    },
+    "require": {
+        "zendframework/zend-permissions-rbac": "^3.0",
+        "zendframework/zend-servicemanager": "^3.4",
+        "psr/http-message": "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "zendframework/zend-expressive-router": "^3.1",
+        "zendframework/zend-diactoros": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
