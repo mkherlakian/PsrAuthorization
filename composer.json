@@ -2,7 +2,7 @@
     "name": "mauricek/psr-authorization",
     "description": "A PSR-7 compatible package to handle authorization. Includes assertions out oof the box to assert if a user is owner of a resouce.",
     "type": "library",
-    "license": "New BSD License",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "mkherlakian",
