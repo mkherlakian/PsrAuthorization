@@ -13,13 +13,20 @@ class AuthorizationFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        $config = $container->get('config')['permissions'];
 
-        if(!isset($config['roles'])) {
+        $config = $container->get('config');
+
+        if(!isset($config['permissions'])) {
+            throw new \Exception('Permissions are not configured - missing permissions key');
+        }
+
+        $permissions = $config['permissions'];
+
+        if(!isset($permissions['roles'])) {
             throw new \Exception('Rbac roles are not configured');
         }
 
-        if(!isset($config['permissions'])) {
+        if(!isset($permissions['permissions'])) {
             throw new \Exception('Rbac permissions are not configured');
         }
 
@@ -29,13 +36,13 @@ class AuthorizationFactory
         $perRoleAssertions = [];
         $perPermissionAssertions = [];
 
-        foreach($config['roles'] as $role => $options)
+        foreach($permissions['roles'] as $role => $options)
         {
             $rbac->addRole($role, $options['parents'] ?? null);
             $perRoleAssertions[$role] = $options['assertions'] ?? [];
         }
 
-        foreach($config['permissions'] as $role => $permissions)
+        foreach($permissions['permissions'] as $role => $permissions)
         {
             foreach($permissions as $permission => $options)
             {

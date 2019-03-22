@@ -19,6 +19,9 @@ class ConfigProvider
     public function getDependencies() : array
     {
         return [
+            'invokables' => [
+                Middleware\PsrAuthCredentialsTranslatorMiddleware::class => Middleware\PsrAuthCredentialsTranslatorMiddleware::class
+            ],
             'factories' => [
                 Middleware\AuthorizationMiddleware::class => Middleware\AuthorizationFactory::class,
                 ResourceOwnerPluginManager::class => function(ContainerInterface $container, $requestedName) {
